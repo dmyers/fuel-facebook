@@ -1,27 +1,45 @@
-# Fuel-Facebook
+# Fuel Facebook Package
 
-Simple package for Facebook's PHP SDK for the FuelPHP framework.
+A super simple Facebook package for Facebook's PHP SDK for Fuel.
 
-More about facebook php sdk: https://github.com/facebook/facebook-php-sdk
+## About
+* Version: 1.0.0
+* License: Not determined
+* Author: Derek Myers
 
-## Installing
+## Installation
 
-Download or clone from Github. Put it as 'facebook' (NOT fuel-facebook) dir in the packages dir and add to your app/config/config.php.
+### Git Submodule
 
-	git clone --recursive git@github.com:dmyers/fuel-facebook.git facebook
+If you are installing this as a submodule (recommended) in your git repo root, run this command:
+
+	$ git submodule add git://github.com/dmyers/fuel-facebook.git fuel/packages/facebook
+
+Then you you need to initialize and update the submodule:
+
+	$ git submodule update --init fuel/packages/facebook/
+
+###Download
+
+Alternatively you can download it and extract it into `fuel/packages/facebook/`.
 
 ## Usage
 
 ```php
-Facebook::instance()->getUser();
+$facebook = Facebook::instance();
+$user = $facebook->getUser();
+
+if ($user) {
+	$logoutUrl = $facebook->getLogoutUrl();
+} else {
+	$loginUrl = $facebook->getLoginUrl();
+}
 ```
 
-## Config
+For more examples, check out the [Facebook PHP SDK](https://github.com/facebook/facebook-php-sdk).
 
-Copy `PKGPATH/facebook/config/facebook.php` to your `APP/config/facebook.php` and change it as you need.
+## Configuration
 
-## Updating Fuel-Facebook
+Configuration is easy. First thing you will need to do is to [register your app with Facebook](https://developers.facebook.com/apps) (if you haven't already).
 
-As facebook is a submodule, update it simply doing
-
-	git pull --recurse-submodules
+Next, copy the `config/facebook.php` from the package up into your `app/config/` directory. Open it up and enter your API keys.
