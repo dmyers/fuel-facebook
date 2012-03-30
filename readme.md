@@ -8,7 +8,7 @@ More about facebook php sdk: https://github.com/facebook/facebook-php-sdk
 
 Download or clone from Github. Put it as 'facebook' (NOT fuel-facebook) dir in the packages dir and add to your app/config/config.php.
 
-	git clone --recursive git@github.com:dmyers/fuel-facebook.git
+	git clone --recursive git@github.com:dmyers/fuel-facebook.git facebook
 
 ## Usage
 
