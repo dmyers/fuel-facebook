@@ -13,12 +13,12 @@ Download or clone from Github. Put it as 'facebook' (NOT fuel-facebook) dir in t
 ## Usage
 
 ```php
-Facebook::getUser();
+Facebook::instance()->getUser();
 ```
 
 ## Config
 
-Copy `PKGPATH/less/config/facebook.php` to your `APP/config/facebook.php` and change it as you need.
+Copy `PKGPATH/facebook/config/facebook.php` to your `APP/config/facebook.php` and change it as you need.
 
 ## Updating Fuel-Facebook
 
