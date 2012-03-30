@@ -5,7 +5,7 @@ require_once PKGPATH.'facebook'.DS.'vendor'.DS.'facebook-sdk'.DS.'src'.DS.'base_
 
 class Facebook extends \BaseFacebook
 {
-	public static $instance = null;
+	protected static $_instance = null;
 
 	protected static $kSupportedKeys = array(
 		'state', 'code', 'access_token', 'user_id'
@@ -28,16 +28,16 @@ class Facebook extends \BaseFacebook
 			throw new Facebook_Exception('You must set the secret config');
 		}
 		
-		return new self($config);
+		return new static($config);
 	}
 
 	public static function instance()
 	{
-		if (self::$instance === null) {
-			self::$instance = self::forge();
+		if (self::$_instance === null) {
+			self::$_instance = self::forge();
 		}
 
-		return self::$instance;
+		return self::$_instance;
 	}
 
 	public function getLoginUrl($params = array())
