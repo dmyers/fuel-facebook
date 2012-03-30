@@ -32,6 +32,15 @@ class Facebook extends \BaseFacebook
 		return self::$instance;
 	}
 
+	public function getLoginUrl($params = array())
+	{
+		if (empty($params['scope'])) {
+			$params['scope'] = \Config::get('facebook.scope');
+		}
+
+		return parent::getLoginUrl($params);
+	}
+
 	protected function setPersistentData($key, $value)
 	{
 		if (!in_array($key, self::$kSupportedKeys)) {
