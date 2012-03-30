@@ -5,17 +5,35 @@ require_once PKGPATH.'facebook'.DS.'vendor'.DS.'facebook-sdk'.DS.'src'.DS.'base_
 
 class Facebook extends \BaseFacebook
 {
+	/**
+	 * loaded facebook instance
+	 */
 	protected static $_instance = null;
 
+	/**
+	 * array of supported persistent data keys
+	 */
 	protected static $kSupportedKeys = array(
 		'state', 'code', 'access_token', 'user_id'
 	);
 
+	/**
+	 * Initialize by loading config
+	 */
 	public static function _init()
 	{
 		\Config::load('facebook', true);
 	}
 
+	/**
+	 * Returns a new Facebook object.
+	 *
+	 *     $facebook = Facebook::forge();
+	 *
+	 * @param	void
+	 * @access	public
+	 * @return  Facebook
+	 */
 	public static function forge()
 	{
 		$config = \Config::get('facebook');
@@ -31,6 +49,13 @@ class Facebook extends \BaseFacebook
 		return new static($config);
 	}
 
+	/**
+	 * create or return the facebook instance
+	 *
+	 * @param	void
+	 * @access	public
+	 * @return	Facebook object
+	 */
 	public static function instance()
 	{
 		if (self::$_instance === null) {
@@ -40,6 +65,13 @@ class Facebook extends \BaseFacebook
 		return self::$_instance;
 	}
 
+	/**
+	 * get login url to facebook
+	 *
+	 * @access	public
+	 * @param	array	parameters to use for login url
+	 * @return	mixed
+	 */
 	public function getLoginUrl($params = array())
 	{
 		if (empty($params['scope'])) {
@@ -49,6 +81,12 @@ class Facebook extends \BaseFacebook
 		return parent::getLoginUrl($params);
 	}
 
+	/**
+	 * Provides the implementations of the inherited abstract
+	 * methods.  The implementation uses PHP sessions to maintain
+	 * a store for authorization codes, user ids, CSRF states, and
+	 * access tokens.
+	 */
 	protected function setPersistentData($key, $value)
 	{
 		if (!in_array($key, self::$kSupportedKeys)) {
