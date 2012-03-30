@@ -20,6 +20,14 @@ class Facebook extends \BaseFacebook
 	{
 		$config = \Config::get('facebook');
 		
+		if (empty($config['appId'])) {
+			throw new Facebook_Exception('You must set the appId config');
+		}
+
+		if (empty($config['secret'])) {
+			throw new Facebook_Exception('You must set the secret config');
+		}
+		
 		return new self($config);
 	}
 
@@ -89,4 +97,7 @@ class Facebook extends \BaseFacebook
 		return implode('_', array('fb', $this->getAppId(), $key));
 	}
 
+}
+
+class Facebook_Exception extends \Fuel_Exception {
 }
