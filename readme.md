@@ -30,6 +30,13 @@ $facebook = Facebook::instance();
 $user = $facebook->getUser();
 
 if ($user) {
+	try {
+		$userInfo = $facebook->api('/me');
+		echo $userInfo['name'];
+	} catch (FacebookApiException $e) {
+		echo $e->getMessage();
+	}
+
 	$logoutUrl = $facebook->getLogoutUrl();
 } else {
 	$loginUrl = $facebook->getLoginUrl();
@@ -50,8 +57,8 @@ In order to keep the package up to date simply run:
 
 	$ git submodule update --recursive fuel/packages/facebook/
 
-# License
----
+## License
+
 Except as otherwise noted, the Fuel-Facebook is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 Licensed under the Apache License, Version 2.0 (the "License");
