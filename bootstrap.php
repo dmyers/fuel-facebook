@@ -18,5 +18,6 @@
 Autoloader::add_core_namespace('Facebook');
 
 Autoloader::add_classes(array(
-	'Facebook\\Facebook' => __DIR__.'/classes/facebook.php',
+	'Facebook\\Facebook'          => __DIR__.'/classes/facebook.php',
+	'Facebook\\FacebookException' => __DIR__.'/classes/facebook.php',
 ));

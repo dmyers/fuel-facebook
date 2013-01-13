@@ -64,11 +64,11 @@ class Facebook extends \BaseFacebook
 		$config = \Config::get('facebook');
 		
 		if (empty($config['appId'])) {
-			throw new FacebookException('You must set the appId config');
+			throw new \FacebookException('You must set the appId config');
 		}
 
 		if (empty($config['secret'])) {
-			throw new FacebookException('You must set the secret config');
+			throw new \FacebookException('You must set the secret config');
 		}
 		
 		return new static($config);
