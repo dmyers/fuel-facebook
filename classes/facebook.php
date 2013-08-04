@@ -23,10 +23,10 @@
  * @author		Derek Myers
  * @link		https://github.com/dmyers/fuel-facebook
  */
- 
+
 namespace Facebook;
 
-require_once PKGPATH.'facebook'.DS.'vendor'.DS.'facebook-sdk'.DS.'src'.DS.'base_facebook.php';
+require_once VENDORPATH.'facebook'.DS.'php-sdk'.DS.'src'.DS.'base_facebook.php';
 
 class Facebook extends \BaseFacebook
 {
