@@ -11,8 +11,6 @@
 
 namespace Facebook;
 
-require_once VENDORPATH.'facebook'.DS.'php-sdk'.DS.'src'.DS.'base_facebook.php';
-
 class Facebook extends \BaseFacebook
 {
 	/**
